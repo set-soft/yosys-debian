@@ -1,0 +1,69 @@
+From: Sebastian Kuzminsky <seb@highlab.com>
+Date: Sat, 14 May 2016 15:44:13 +0200
+Subject: Switch the yosys manual font from luximono (non-free) to inconsolata
+ (free)
+
+===================================================================
+---
+ manual/APPNOTE_010_Verilog_to_BLIF.tex      | 2 +-
+ manual/APPNOTE_011_Design_Investigation.tex | 2 +-
+ manual/APPNOTE_012_Verilog_to_BTOR.tex      | 2 +-
+ manual/manual.tex                           | 2 +-
+ manual/presentation.tex                     | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+--- a/manual/APPNOTE_010_Verilog_to_BLIF.tex
++++ b/manual/APPNOTE_010_Verilog_to_BLIF.tex
+@@ -4,7 +4,7 @@
+ \documentclass[9pt,technote,a4paper]{IEEEtran}
+ 
+ \usepackage[T1]{fontenc}   % required for luximono!
+-\usepackage[scaled=0.8]{luximono}  % typewriter font with bold face
++\usepackage[scaled=0.8]{inconsolata}  % typewriter font with bold face
+ 
+ % To install the luximono font files:
+ % getnonfreefonts-sys --all        or
+--- a/manual/APPNOTE_011_Design_Investigation.tex
++++ b/manual/APPNOTE_011_Design_Investigation.tex
+@@ -4,7 +4,7 @@
+ \documentclass[9pt,technote,a4paper]{IEEEtran}
+ 
+ \usepackage[T1]{fontenc}   % required for luximono!
+-\usepackage[scaled=0.8]{luximono}  % typewriter font with bold face
++\usepackage[scaled=0.8]{inconsolata}  % typewriter font with bold face
+ 
+ % To install the luximono font files:
+ % getnonfreefonts-sys --all        or
+--- a/manual/APPNOTE_012_Verilog_to_BTOR.tex
++++ b/manual/APPNOTE_012_Verilog_to_BTOR.tex
+@@ -4,7 +4,7 @@
+ \documentclass[9pt,technote,a4paper]{IEEEtran}
+ 
+ \usepackage[T1]{fontenc}   % required for luximono!
+-\usepackage[scaled=0.8]{luximono}  % typewriter font with bold face
++\usepackage[scaled=0.8]{inconsolata}  % typewriter font with bold face
+ 
+ % To install the luximono font files:
+ % getnonfreefonts-sys --all        or
+--- a/manual/manual.tex
++++ b/manual/manual.tex
+@@ -2,7 +2,7 @@
+ 
+ \usepackage[T1]{fontenc}   % required for luximono!
+ \usepackage{lmodern}
+-\usepackage[scaled=0.8]{luximono}  % typewriter font with bold face
++\usepackage[scaled=0.8]{inconsolata}  % typewriter font with bold face
+ 
+ % To install the luximono font files:
+ % getnonfreefonts-sys --all        or
+--- a/manual/presentation.tex
++++ b/manual/presentation.tex
+@@ -3,7 +3,7 @@
+ 
+ \usepackage[T1]{fontenc}   % required for luximono!
+ \usepackage{lmodern}
+-\usepackage[scaled=0.8]{luximono}  % typewriter font with bold face
++\usepackage[scaled=0.8]{inconsolata}  % typewriter font with bold face
+ 
+ % To install the luximono font files:
+ % getnonfreefonts-sys --all        or

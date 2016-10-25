@@ -1,0 +1,151 @@
+yosys (0.6+20161022gitaa72262-1) stable; urgency=medium
+
+  * Non-maintainer upload.
+  * New upstream release: 0.6 (ee91350)
+    - Refreshed patches
+
+ -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Mon, 24 Oct 2016 14:24:30 -0300
+
+yosys (0.6-7) unstable; urgency=medium
+
+  [ Ruben Undheim ]
+  * Use gbp-pq for patches.
+  * debian/control:
+    - Removed dependency on GCC 5 which was added in 0.6-6. (Closes: #835953)
+      It causes problems now since GCC 6 is default.
+
+  [Sebastian Kuzminsky]
+  * debian/patches/switch-to-free-font.patch: Switch manual tt font
+    from libertine to inconsolata.  The yosys manual doesn't render with
+    libertine on sid, but it renders nicely with inconsolata. (Closes: #835678)
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Thu, 22 Sep 2016 19:30:37 +0200
+
+yosys (0.6-6) unstable; urgency=medium
+
+  * Added versioned build-dependency on gcc-5 (>= 5.3.1-15) since it
+    now fails to build with older versions due to the fix for #822408.
+    (Closes: #823809)
+  * Updated Standards to 3.9.8 - no changes
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Wed, 11 May 2016 22:20:00 +0200
+
+yosys (0.6-5) unstable; urgency=medium
+
+  [ Sebastian Kuzminsky ]
+  * debian/patches/fixup-initalization.patch:
+    - Add a bugfix patch from upstream's development branch.
+
+  [ Ruben Undheim ]
+  * debian/patches/fix_ftbfs_cannot_find_infinite.patch:
+    - Fixes FTBFS due to std::isfinite not found. (Closes: #822408)
+  * Move PDFs in yosys-doc to /usr/share/doc/yosys in order to adhere to
+    Debian Policy 12.3.
+  * Refreshed patches
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Tue, 03 May 2016 21:56:53 +0200
+
+yosys (0.6-4) unstable; urgency=medium
+
+  * debian/rules:
+    - Override dh_auto_build-arch instead of dh_auto_build to resolve
+      build issue for "all" package.
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sat, 09 Apr 2016 16:38:20 +0200
+
+yosys (0.6-3) unstable; urgency=medium
+
+  [ Sebastian Kuzminsky ]
+  * debian/patches/kfreebsd-support.patch:
+    - Fix a build problem on kFreeBSD. Use __unix__ instead of __linux__
+
+  [ Ruben Undheim ]
+  * debian/control:
+    - Define Build-Depends-Indep dependencies
+  * debian/rules:
+    - Override dh_auto_build-indep instead for building documentation.
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sat, 09 Apr 2016 14:29:32 +0200
+
+yosys (0.6-2) unstable; urgency=medium
+
+  * split the package into yosys, yosys-dev, and yosys-doc
+    - yosys is the tool itself
+    - yosys-dev is development files for building plugins
+    - yosys-doc is the manual (in pdf format)
+  * debian/rules:
+    - fail the build if upstream installs files that aren't picked up
+      by any of the debs
+
+ -- Sebastian Kuzminsky <seb@highlab.com>  Wed, 23 Mar 2016 18:46:51 -0600
+
+yosys (0.6-1) unstable; urgency=medium
+
+  * Uploaded to unstable.
+  * New upstream release: 0.6 (5869d26)
+    - 01_gitrevision.patch: refresh
+    - spelling-fixes.patch: fix upstream spelling mistakes
+  * debian/rules:
+    - don't run make as part of dh_auto_configure, it'll get run by
+        dh_auto_build later
+    - enable parallel build
+    - handle the new python dependencies of yosys-smtbmc
+  * debian/control:
+    - add Sebastian Kuzminsky to Uploaders
+  * add a manpage for the new yosys-smtbmc executable
+
+ -- Sebastian Kuzminsky <seb@highlab.com>  Sun, 28 Feb 2016 10:48:44 -0700
+
+yosys (0.5.0+20151013gitf13e387-2~exp1) experimental; urgency=low
+
+  * Added autopkg test for synthesis for iCE FPGA.
+  * Updated standards to 3.9.7 - no needed changes
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 21 Feb 2016 12:21:37 +0100
+
+yosys (0.5.0+20151013gitf13e387-1) unstable; urgency=low
+
+  * Uploaded to unstable
+    - New features in yosys are needed for the Icestorm tool chain
+  * New upstream version
+    - Drop patches 04_installpath.patch and 06_cflags_ldflags.patch
+    - Set PREFIX in d/rules
+  * debian/control: Fixed Vcs-Git to use https
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 07 Feb 2016 11:59:04 +0100
+
+yosys (0.5.0+20151007gitba4cce9-1) experimental; urgency=low
+
+  * New upstream version 
+    - Refreshed patches
+  * debian/control: Added "python3" as build-dependency
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sat, 10 Oct 2015 09:21:17 +0200
+
+yosys (0.5.0-1) unstable; urgency=low
+
+  * New upstream release
+  * Added d/watch
+  * Updated copyright years in d/copyright
+  * Changed dependency from tcl8.5-dev to tcl-dev
+  * Added d/gbp.conf
+  * Added link from /usr/bin/yosys-abc to /usr/bin/berkeley-abc
+    - Also added man page for yosys-abc
+  * Fixed paths returned by yosys-config
+    - fix included in 04_installpath.patch
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Mon, 09 Feb 2015 20:37:38 +0100
+
+yosys (0.4.0-1) unstable; urgency=medium
+
+  * New upstream release
+  * Few fixes in d/copyright
+  * Removed some strictly not needed dependencies
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Wed, 12 Nov 2014 18:35:59 +0100
+
+yosys (0.3.0+20140906git652345c-1) unstable; urgency=low
+
+  * Initial release (Closes: #761365)
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Thu, 16 Oct 2014 22:02:03 +0200

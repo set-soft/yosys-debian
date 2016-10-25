@@ -1,0 +1,48 @@
+#!/usr/bin/make -f
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
+export ABCEXTERNAL = berkeley-abc
+export GIT_REV = $(shell git rev-parse --short upstream/master 2> /dev/null || echo UNKNOWN)
+
+CHANGELOG_DATE ?= $(shell LC_ALL=C date -u -d "`dpkg-parsechangelog --show-field Date`" +"%d %B %Y")
+
+
+%:
+	PREFIX=/usr dh $@ --parallel --with=python3
+
+
+echo_git_rev:
+	echo $(GIT_REV)
+
+override_dh_auto_clean:
+	dh_auto_clean
+	$(RM) debian/man/*.1
+
+override_dh_auto_configure:
+	make config-gcc
+
+override_dh_install:
+	dh_install --fail-missing
+
+override_dh_auto_install:
+	dh_auto_install --parallel -- GIT_REV=$(GIT_REV)
+
+override_dh_installman:
+	cd debian/man ; CHANGELOG_DATE="$(CHANGELOG_DATE)" ./genmanpages.sh
+	dh_installman
+
+override_dh_compress:
+	dh_compress --exclude=.pdf
+
+override_dh_auto_build-arch:
+	dh_auto_build --parallel -- all GIT_REV=$(GIT_REV)
+
+override_dh_auto_build-indep:
+	dh_auto_build --parallel -- all manual GIT_REV=$(GIT_REV)
+
+override_dh_auto_test:
+	dh_auto_test --parallel -- GIT_REV=$(GIT_REV)
+
