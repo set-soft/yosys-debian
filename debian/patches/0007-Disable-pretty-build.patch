@@ -1,0 +1,19 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Wed, 5 Apr 2017 09:31:37 +0000
+Subject: Disable pretty build
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -42,7 +42,7 @@
+ EXTRA_TARGETS =
+ TARGETS = yosys$(EXE) yosys-config
+ 
+-PRETTY = 1
++PRETTY = 0
+ SMALL = 0
+ 
+ # Unit test

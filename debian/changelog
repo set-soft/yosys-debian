@@ -1,3 +1,47 @@
+yosys (0.7+20170701gitea805af-1) UNRELEASED; urgency=medium
+
+  * Non-maintainer upload.
+  * New upstream version
+
+ -- Salvador Eduardo Tropea <salvador@inti.gov.ar>  Mon, 03 Jul 2017 09:14:35 -0300
+
+yosys (0.7+20170630git8952bd6-1) stable; urgency=medium
+
+  * Non-maintainer upload.
+  * New upstream release: 0.7 (61f6811)
+
+ -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Fri, 30 Jun 2017 13:31:00 -0300
+
+yosys (0.7-3~exp1) UNRELEASED; urgency=low
+
+  * debian/patches/0007-Disable-pretty-build.patch:
+    - New patch to disable pretty build (Closes: #847110)
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Wed, 05 Apr 2017 09:33:20 +0000
+
+yosys (0.7-2) unstable; urgency=medium
+
+  * debian/control:
+    - Moved berkeley-abc from Build-Depends-Indep to Build-Depends in order
+      to fix dependency problem during test.
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 06 Nov 2016 14:40:47 +0000
+
+yosys (0.7-1) unstable; urgency=medium
+
+  * New upstream release
+  * Refreshed patches. Some patches applied upstream and deleted.
+  * Updated man page for yosys
+  * Simplified debian/*.install files
+  * debian/patches/03_notruntests.patch deleted
+    - Tests can now be run during build since an updated version
+      of iverilog is in the archive
+  * debian/control:
+    - Depend on a newer version of berkeley-abc
+    - Build-depend on iverilog >= 10.1
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 06 Nov 2016 11:28:06 +0100
+
 yosys (0.6+20161022gitaa72262-1) stable; urgency=medium
 
   * Non-maintainer upload.

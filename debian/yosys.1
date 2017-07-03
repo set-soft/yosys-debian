@@ -2,7 +2,7 @@
 .\" First parameter, NAME, should be all caps
 .\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
 .\" other parameters are allowed: see man(7), man(1)
-.TH YOSYS 1 "April 12, 2014"
+.TH YOSYS 1 "November 04, 2016"
 .\" Please adjust this date whenever revising the manpage.
 .\"
 .\" Some roff macros, for reference:
@@ -33,8 +33,15 @@ command.
 .SH OPTIONS
 A summary of options is included below.
 .TP
+.B \-Q
+suppress printing of banner (copyright, disclaimer, version)
+.TP
+.B \-T
+suppress printing of footer (log hash, version, timing statistics)
+.TP
 .B \-q
 quiet operation. only write error message to console
+use this option twice to also quiet warning messages
 .TP
 .B \-v <level>
 print log headers up to level <level> to the console. (implies \-q)
@@ -42,14 +49,23 @@ print log headers up to level <level> to the console. (implies \-q)
 .B \-t
 annotate all log messages with a time stamp
 .TP
+.B \-d
+print more detailed timing stats at exit
+.TP
 .B \-l logfile
 write log messages to the specified file
+.TP
+.B \-L logfile
+like -l but open log file in line buffered mode
 .TP
 .B \-o outfile
 write the design to the specified file on exit
 .TP
 .B \-b backend
 use this backend for the output file specified on the command line
+.TP
+.B \-f frontend
+use the specified frontend for the input files on the command line
 .TP
 .B \-H
 print the command list
@@ -69,14 +85,38 @@ execute the commands
 .B \-m module_file
 load the specified module (aka plugin)
 .TP
+.B \-X
+enable tracing of core data structure changes. for debugging
+.TP
+.B \-M
+will slightly randomize allocated pointer addresses. for debugging
+.TP
+.B \-A
+will call abort() at the end of the script. for debugging
+.TP
+.B \-D <header_id>[:<filename>]
+dump the design when printing the specified log header to a file.
+yosys_dump_<header_id>.il is used as filename if none is specified.
+Use 'ALL' as <header_id> to dump at every header.
+.TP
 .B \-V
 print version information and exit
 .TP
 .B \-S
-The option \-S is an alias for the following options that perform a simple
-transformation of the input to a gate-level netlist.
+The option \-S is an alias for the "synth" command, a default
+script for transforming the Verilog input to a gate-level netlist. For example:
 
-    \-p hierarchy \-p proc \-p opt \-p memory \-p opt \-p techmap \-p opt
+    yosys -o output.blif -S input.v
+
+.SH USAGE
+For more complex synthesis jobs it is recommended to use the read_* and write_*
+commands in a script file instead of specifying input and output files on the
+command line.
+
+When no commands, script files or input files are specified on the command
+line, yosys automatically enters the interactive command mode. Use the 'help'
+command to get information on the individual commands.
+
 .SH SEE ALSO
 berkeley-abc(1), yosys-config(1), yosys-filterlib(1)
 .SH AUTHOR

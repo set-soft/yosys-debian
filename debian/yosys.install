@@ -1,15 +1,18 @@
-debian/tmp/usr/bin/yosys-filterlib usr/bin
-debian/tmp/usr/bin/yosys-smtbmc usr/bin
-debian/tmp/usr/bin/yosys usr/bin
+usr/bin/yosys-filterlib
+usr/bin/yosys-smtbmc
+usr/bin/yosys
 
-debian/tmp/usr/share/yosys/simlib.v usr/share/yosys
-debian/tmp/usr/share/yosys/pmux2mux.v usr/share/yosys
-debian/tmp/usr/share/yosys/simcells.v usr/share/yosys
-debian/tmp/usr/share/yosys/techmap.v usr/share/yosys
-debian/tmp/usr/share/yosys/cells.lib usr/share/yosys
-debian/tmp/usr/share/yosys/adff2dff.v usr/share/yosys
+usr/share/yosys/simlib.v
+usr/share/yosys/pmux2mux.v
+usr/share/yosys/simcells.v
+usr/share/yosys/techmap.v
+usr/share/yosys/cells.lib
+usr/share/yosys/adff2dff.v
+usr/share/yosys/dff2ff.v
 
-debian/tmp/usr/share/yosys/ice40 usr/share/yosys
-debian/tmp/usr/share/yosys/xilinx usr/share/yosys
-debian/tmp/usr/share/yosys/greenpak4 usr/share/yosys
+usr/share/yosys/altera_intel
+usr/share/yosys/ice40
+usr/share/yosys/xilinx
+usr/share/yosys/greenpak4
+usr/share/yosys/gowin
 debian/tmp/usr/share/yosys/python3/smtio.py usr/share/yosys

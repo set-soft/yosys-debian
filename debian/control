@@ -14,7 +14,9 @@ Build-Depends: debhelper (>= 9),
                libffi-dev,
                pkg-config,
                txt2man,
-               python3
+               iverilog (>= 10.1),
+               python3,
+               berkeley-abc (>= 1.01+20161002hgeb6eca6+dfsg)
 Build-Depends-Indep:
                texlive-base,
                texlive-generic-recommended,
@@ -27,8 +29,7 @@ Build-Depends-Indep:
                texlive-publishers,
                texlive-bibtex-extra,
                lmodern,
-               graphviz,
-               berkeley-abc (>= 1.01)
+               graphviz
 Standards-Version: 3.9.8
 Vcs-Browser: https://anonscm.debian.org/cgit/debian-science/packages/yosys.git
 Vcs-Git: https://anonscm.debian.org/git/debian-science/packages/yosys.git
@@ -39,7 +40,7 @@ Architecture: any
 Depends: ${shlibs:Depends},
          ${python3:Depends},
          ${misc:Depends},
-         berkeley-abc (>= 1.01),
+         berkeley-abc (>= 1.01+20161002hgeb6eca6+dfsg),
          xdot
 Description: Framework for Verilog RTL synthesis
  This is a framework for Verilog RTL synthesis. It currently has extensive
