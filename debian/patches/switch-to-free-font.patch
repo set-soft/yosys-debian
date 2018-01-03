@@ -12,6 +12,8 @@ Subject: Switch the yosys manual font from luximono (non-free) to inconsolata
  manual/presentation.tex                     | 2 +-
  5 files changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/manual/APPNOTE_010_Verilog_to_BLIF.tex b/manual/APPNOTE_010_Verilog_to_BLIF.tex
+index 0ecdf61..05559b6 100644
 --- a/manual/APPNOTE_010_Verilog_to_BLIF.tex
 +++ b/manual/APPNOTE_010_Verilog_to_BLIF.tex
 @@ -4,7 +4,7 @@
@@ -23,6 +25,8 @@ Subject: Switch the yosys manual font from luximono (non-free) to inconsolata
  
  % To install the luximono font files:
  % getnonfreefonts-sys --all        or
+diff --git a/manual/APPNOTE_011_Design_Investigation.tex b/manual/APPNOTE_011_Design_Investigation.tex
+index 9780c78..4e63e20 100644
 --- a/manual/APPNOTE_011_Design_Investigation.tex
 +++ b/manual/APPNOTE_011_Design_Investigation.tex
 @@ -4,7 +4,7 @@
@@ -34,6 +38,8 @@ Subject: Switch the yosys manual font from luximono (non-free) to inconsolata
  
  % To install the luximono font files:
  % getnonfreefonts-sys --all        or
+diff --git a/manual/APPNOTE_012_Verilog_to_BTOR.tex b/manual/APPNOTE_012_Verilog_to_BTOR.tex
+index 1bc2778..c139188 100644
 --- a/manual/APPNOTE_012_Verilog_to_BTOR.tex
 +++ b/manual/APPNOTE_012_Verilog_to_BTOR.tex
 @@ -4,7 +4,7 @@
@@ -45,6 +51,8 @@ Subject: Switch the yosys manual font from luximono (non-free) to inconsolata
  
  % To install the luximono font files:
  % getnonfreefonts-sys --all        or
+diff --git a/manual/manual.tex b/manual/manual.tex
+index 67982cb..b274792 100644
 --- a/manual/manual.tex
 +++ b/manual/manual.tex
 @@ -2,7 +2,7 @@
@@ -56,6 +64,8 @@ Subject: Switch the yosys manual font from luximono (non-free) to inconsolata
  
  % To install the luximono font files:
  % getnonfreefonts-sys --all        or
+diff --git a/manual/presentation.tex b/manual/presentation.tex
+index 63b963b..8060998 100644
 --- a/manual/presentation.tex
 +++ b/manual/presentation.tex
 @@ -3,7 +3,7 @@

@@ -1,9 +1,15 @@
-yosys (0.7+20170701gitea805af-1) UNRELEASED; urgency=medium
+yosys (0.7+20180102git9804ebe-1) stable; urgency=medium
 
   * Non-maintainer upload.
-  * New upstream version
 
- -- Salvador Eduardo Tropea <salvador@inti.gov.ar>  Mon, 03 Jul 2017 09:14:35 -0300
+ -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Tue, 02 Jan 2018 13:48:00 -0300
+
+yosys (0.7+20170701gitea805af-2) stable; urgency=medium
+
+  * Non-maintainer upload.
+  * New stable base Stretch
+
+ -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Fri, 15 Sep 2017 09:34:45 -0300
 
 yosys (0.7+20170630git8952bd6-1) stable; urgency=medium
 

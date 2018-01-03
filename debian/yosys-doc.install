@@ -1,2 +1,5 @@
 manual/presentation.pdf usr/share/doc/yosys
 manual/manual.pdf usr/share/doc/yosys
+manual/APPNOTE_010_Verilog_to_BLIF.pdf usr/share/doc/yosys
+manual/APPNOTE_011_Design_Investigation.pdf usr/share/doc/yosys
+manual/APPNOTE_012_Verilog_to_BTOR.pdf usr/share/doc/yosys

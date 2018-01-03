@@ -1,6 +1,4 @@
 switch-to-free-font.patch
-manual-build.patch
 kfreebsd-support.patch
 0007-Disable-pretty-build.patch
-0008-Exclude-TBUF-from-opt_merge.patch
-0009-Test-clean.patch
+0010-Manual-build-fix.patch

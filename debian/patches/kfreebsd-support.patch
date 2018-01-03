@@ -18,7 +18,7 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
 
 --- a/kernel/driver.cc
 +++ b/kernel/driver.cc
-@@ -30,7 +30,7 @@
+@@ -34,7 +34,7 @@
  #include <limits.h>
  #include <errno.h>
  
@@ -27,7 +27,7 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
  #  include <sys/types.h>
  #  include <unistd.h>
  #endif
-@@ -409,7 +409,7 @@
+@@ -460,7 +460,7 @@
  #else
  		std::string meminfo;
  		std::string stats_divider = ", ";
@@ -36,7 +36,7 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
  		std::ifstream statm;
  		statm.open(stringf("/proc/%lld/statm", (long long)getpid()));
  		if (statm.is_open()) {
-@@ -463,7 +463,7 @@
+@@ -514,7 +514,7 @@
  		}
  	}
  
@@ -56,7 +56,7 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
  #  include <dlfcn.h>
  #endif
  
-@@ -280,7 +280,7 @@
+@@ -358,7 +358,7 @@
  	log_flush();
  }
  
@@ -65,7 +65,7 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
  void log_backtrace(const char *prefix, int levels)
  {
  	if (levels <= 0) return;
-@@ -464,7 +464,7 @@
+@@ -549,7 +549,7 @@
  // ---------------------------------------------------
  // This is the magic behind the code coverage counters
  // ---------------------------------------------------
@@ -76,7 +76,7 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
  
 --- a/kernel/log.h
 +++ b/kernel/log.h
-@@ -106,7 +106,7 @@
+@@ -112,7 +112,7 @@
  // This is the magic behind the code coverage counters
  // ---------------------------------------------------
  
@@ -87,7 +87,7 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
      static CoverData __d __attribute__((section("yosys_cover_list"), aligned(1), used)) = { __FILE__, __FUNCTION__, _id, __LINE__, 0 }; \
 --- a/kernel/yosys.cc
 +++ b/kernel/yosys.cc
-@@ -66,7 +66,7 @@
+@@ -70,7 +70,7 @@
  
  void memhasher_on()
  {
@@ -96,18 +96,18 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
  	memhasher_rng += time(NULL) << 16 ^ getpid();
  #endif
  	memhasher_store.resize(0x10000);
-@@ -647,7 +647,7 @@
+@@ -651,7 +651,7 @@
  } TclPass;
  #endif
  
 -#if defined(__linux__) || defined(__CYGWIN__)
-+#if defined(__unix__) || defined(__CYGWIN__)
++#if defined(__unix__)
  std::string proc_self_dirname()
  {
  	char path[PATH_MAX];
 --- a/libs/minisat/System.cc
 +++ b/libs/minisat/System.cc
-@@ -25,7 +25,7 @@
+@@ -29,7 +29,7 @@
  
  #include "System.h"
  
@@ -115,26 +115,6 @@ Subject: Change yosys to look for the #define constant "__unix__" instead of
 +#if defined(__unix__)
  
  #include <stdlib.h>
- 
-@@ -99,7 +99,7 @@
- 
- void Minisat::setX86FPUPrecision()
- {
--#if defined(__linux__) && defined(_FPU_EXTENDED) && defined(_FPU_DOUBLE) && defined(_FPU_GETCW)
-+#if defined(__unix__) && defined(_FPU_EXTENDED) && defined(_FPU_DOUBLE) && defined(_FPU_GETCW)
-     // Only correct FPU precision on Linux architectures that needs and supports it:
-     fpu_control_t oldcw, newcw;
-     _FPU_GETCW(oldcw); newcw = (oldcw & ~_FPU_EXTENDED) | _FPU_DOUBLE; _FPU_SETCW(newcw);
---- a/libs/minisat/System.h
-+++ b/libs/minisat/System.h
-@@ -21,7 +21,7 @@
- #ifndef Minisat_System_h
- #define Minisat_System_h
- 
--#if defined(__linux__)
-+#if defined(__unix__)
- #include <fpu_control.h>
- #endif
  
 --- a/passes/cmds/cover.cc
 +++ b/passes/cmds/cover.cc
