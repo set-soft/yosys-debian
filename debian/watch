@@ -1,2 +1,2 @@
 version=3
-https://github.com/cliffordwolf/yosys/releases /cliffordwolf/yosys/archive/\w+-(\d\S+)\.tar\.(?:bz2|gz|xz)
+https://github.com/YosysHQ/yosys/releases /YosysHQ/yosys/archive/\w+-(\d\S+)\.tar\.(?:bz2|gz|xz)

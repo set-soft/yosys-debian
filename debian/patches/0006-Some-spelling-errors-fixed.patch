@@ -1,0 +1,67 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Thu, 12 Jul 2018 13:41:39 +0200
+Subject: Some spelling errors fixed
+
+---
+ backends/verilog/verilog_backend.cc | 2 +-
+ frontends/liberty/liberty.cc        | 2 +-
+ manual/CHAPTER_Overview.tex         | 2 +-
+ manual/command-reference-manual.tex | 2 +-
+ passes/cmds/show.cc                 | 2 +-
+ 5 files changed, 5 insertions(+), 5 deletions(-)
+
+--- a/backends/verilog/verilog_backend.cc
++++ b/backends/verilog/verilog_backend.cc
+@@ -1402,7 +1402,7 @@
+ 		}
+ 
+ 	if (!module->processes.empty())
+-		log_warning("Module %s contains unmapped RTLIL proccesses. RTLIL processes\n"
++		log_warning("Module %s contains unmapped RTLIL processes. RTLIL processes\n"
+ 				"can't always be mapped directly to Verilog always blocks. Unintended\n"
+ 				"changes in simulation behavior are possible! Use \"proc\" to convert\n"
+ 				"processes to logic networks and registers.", log_id(module));
+--- a/frontends/liberty/liberty.cc
++++ b/frontends/liberty/liberty.cc
+@@ -615,7 +615,7 @@
+ 					LibertyAst *bus_type_node = node->find("bus_type");
+ 
+ 					if (!bus_type_node || !type_map.count(bus_type_node->value))
+-						log_error("Unkown or unsupported type for bus interface %s on cell %s.\n",
++						log_error("Unknown or unsupported type for bus interface %s on cell %s.\n",
+ 								node->args.at(0).c_str(), log_id(cell_name));
+ 
+ 					int bus_type_width = std::get<0>(type_map.at(bus_type_node->value));
+--- a/manual/CHAPTER_Overview.tex
++++ b/manual/CHAPTER_Overview.tex
+@@ -240,7 +240,7 @@
+ As with modules, the attributes can be Verilog attributes imported by the
+ Verilog frontend or attributes assigned by passes.
+ 
+-In Yosys, busses (signal vectors) are represented using a single wire object
++In Yosys, buses (signal vectors) are represented using a single wire object
+ with a width > 1. So Yosys does not convert signal vectors to individual signals.
+ This makes some aspects of RTLIL more complex but enables Yosys to be used for
+ coarse grain synthesis where the cells of the target architecture operate on
+--- a/manual/command-reference-manual.tex
++++ b/manual/command-reference-manual.tex
+@@ -2859,7 +2859,7 @@
+         assigned to each unique value of this attribute.
+ 
+     -width
+-        annotate busses with a label indicating the width of the bus.
++        annotate buses with a label indicating the width of the bus.
+ 
+     -signed
+         mark ports (A, B) that are declared as signed (using the [AB]_SIGNED
+--- a/passes/cmds/show.cc
++++ b/passes/cmds/show.cc
+@@ -622,7 +622,7 @@
+ 		log("        assigned to each unique value of this attribute.\n");
+ 		log("\n");
+ 		log("    -width\n");
+-		log("        annotate busses with a label indicating the width of the bus.\n");
++		log("        annotate buses with a label indicating the width of the bus.\n");
+ 		log("\n");
+ 		log("    -signed\n");
+ 		log("        mark ports (A, B) that are declared as signed (using the [AB]_SIGNED\n");

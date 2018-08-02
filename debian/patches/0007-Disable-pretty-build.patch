@@ -8,7 +8,7 @@ Subject: Disable pretty build
 
 --- a/Makefile
 +++ b/Makefile
-@@ -45,7 +45,7 @@
+@@ -50,7 +50,7 @@
  EXTRA_TARGETS =
  TARGETS = yosys$(EXE) yosys-config
  

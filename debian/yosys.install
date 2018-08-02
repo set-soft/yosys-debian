@@ -12,9 +12,10 @@ usr/share/yosys/techmap.v
 
 usr/share/yosys/achronix
 usr/share/yosys/coolrunner2
+usr/share/yosys/ecp5
 usr/share/yosys/gowin
 usr/share/yosys/greenpak4
 usr/share/yosys/ice40
 usr/share/yosys/intel
 usr/share/yosys/xilinx
-debian/tmp/usr/share/yosys/python3/smtio.py usr/share/yosys
+usr/share/yosys/python3/smtio.py usr/share/yosys

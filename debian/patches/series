@@ -1,4 +1,6 @@
-switch-to-free-font.patch
-kfreebsd-support.patch
+0001-switch-to-free-font.patch
+0004-Fix-adding-of-sys.path-in-yosys-smtbmc.patch
+0005-Fix-reproducibility-of-PDF-documents-in-yosys-doc.patch
+0006-Some-spelling-errors-fixed.patch
 0007-Disable-pretty-build.patch
 0010-Manual-build-fix.patch

@@ -1,0 +1,133 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Thu, 12 Jul 2018 10:41:21 +0000
+Subject: Fix reproducibility of PDF documents in yosys-doc
+
+---
+ Makefile                |  6 +++---
+ manual/appnotes.sh      |  5 ++++-
+ manual/manual.sh        |  6 ++++--
+ manual/presentation.sh  | 11 +++++++++--
+ manual/presentation.tex |  1 +
+ 5 files changed, 21 insertions(+), 8 deletions(-)
+
+diff --git a/Makefile b/Makefile
+index 8979641..aa66a54 100644
+--- a/Makefile
++++ b/Makefile
+@@ -463,9 +463,9 @@ update-manual: $(TARGETS) $(EXTRA_TARGETS)
+ 	cd manual && ../yosys -p 'help -write-tex-command-reference-manual'
+ 
+ manual: $(TARGETS) $(EXTRA_TARGETS)
+-	cd manual && bash appnotes.sh
+-	cd manual && bash presentation.sh
+-	cd manual && bash manual.sh
++	cd manual && PDF_DATE=$(PDF_DATE) bash appnotes.sh
++	cd manual && PDF_DATE=$(PDF_DATE) bash presentation.sh
++	cd manual && PDF_DATE=$(PDF_DATE) bash manual.sh
+ 
+ clean:
+ 	rm -rf share
+diff --git a/manual/appnotes.sh b/manual/appnotes.sh
+index 0ae5286..798d9d3 100755
+--- a/manual/appnotes.sh
++++ b/manual/appnotes.sh
+@@ -7,16 +7,19 @@ do
+ 	if [ -f $job/make.sh ]; then
+ 		cd $job
+ 		bash make.sh
++        sed -i 's#/CreationDate (D:[^)]\+)#/CreationDate ('${PDF_DATE}')#' *.pdf
+ 		cd ..
+ 	fi
+ 	old_md5=$([ -f $job.aux ] && md5sum < $job.aux || true)
+ 	while
+-		pdflatex -shell-escape -halt-on-error $job.tex || exit
++        pdflatex -shell-escape -halt-on-error '\pdfinfo{/CreationDate('${PDF_DATE}')/ModDate('${PDF_DATE}')}\input{'${job}'.tex}' || exit
+ 		new_md5=$(md5sum < $job.aux)
+ 		[ "$old_md5" != "$new_md5" ]
+ 	do
+ 		old_md5="$new_md5"
+ 	done
++    grep -av '^/ID \[\(<[0-9A-F]\{32\}>\) \1]$' ${job}.pdf > ${job}.pdf.without_pdf_id
++    mv -f ${job}.pdf.without_pdf_id ${job}.pdf
+ 	touch $job.ok
+ done
+ 
+diff --git a/manual/manual.sh b/manual/manual.sh
+index c467393..4417f56 100755
+--- a/manual/manual.sh
++++ b/manual/manual.sh
+@@ -39,7 +39,7 @@ fi
+ 
+ set -ex
+ 
+-pdflatex $PDFTEX_OPT manual.tex
++pdflatex $PDFTEX_OPT '\pdfinfo{/CreationDate('${PDF_DATE}')/ModDate('${PDF_DATE}')}\input{manual.tex}'
+ 
+ if ! $fast_mode; then
+ 	bibtex manual.aux
+@@ -50,10 +50,12 @@ if ! $fast_mode; then
+ 		! cmp autoloop.old autoloop.new
+ 	do
+ 		cp autoloop.new autoloop.old
+-		pdflatex $PDFTEX_OPT manual.tex
++        pdflatex $PDFTEX_OPT '\pdfinfo{/CreationDate('${PDF_DATE}')/ModDate('${PDF_DATE}')}\input{manual.tex}'
+ 	done
+ 
+ 	rm -f autoloop.old
+ 	rm -f autoloop.new
+ fi
+ 
++grep -av '^/ID \[\(<[0-9A-F]\{32\}>\) \1]$' manual.pdf > manual.pdf.without_pdf_id
++mv -f manual.pdf.without_pdf_id manual.pdf
+diff --git a/manual/presentation.sh b/manual/presentation.sh
+index ca8a6c9..f2d0a30 100755
+--- a/manual/presentation.sh
++++ b/manual/presentation.sh
+@@ -29,15 +29,20 @@ set -ex
+ if ! $fast_mode; then
+ 	! md5sum *.aux *.snm *.nav *.toc > autoloop.old
+ 	make -C PRESENTATION_Intro
++    sed -i 's#/CreationDate (D:[^)]\+)#/CreationDate ('${PDF_DATE}')#' PRESENTATION_Intro/*.pdf
+ 	make -C PRESENTATION_ExSyn
++    sed -i 's#/CreationDate (D:[^)]\+)#/CreationDate ('${PDF_DATE}')#' PRESENTATION_ExSyn/*.pdf
+ 	make -C PRESENTATION_ExAdv
++    sed -i 's#/CreationDate (D:[^)]\+)#/CreationDate ('${PDF_DATE}')#' PRESENTATION_ExAdv/*.pdf
+ 	make -C PRESENTATION_ExOth
++    sed -i 's#/CreationDate (D:[^)]\+)#/CreationDate ('${PDF_DATE}')#' PRESENTATION_ExOth/*.pdf
+ 	make -C PRESENTATION_Prog
+ fi
+ 
+ set -ex
+ 
+-pdflatex $PDFTEX_OPT presentation.tex
++echo ${PDF_DATE}
++pdflatex $PDFTEX_OPT '\pdfinfo{/CreationDate('${PDF_DATE}')/ModDate('${PDF_DATE}')}\input{presentation.tex}'
+ 
+ if ! $fast_mode; then
+ 	while
+@@ -45,10 +50,12 @@ if ! $fast_mode; then
+ 		! cmp autoloop.old autoloop.new
+ 	do
+ 		cp autoloop.new autoloop.old
+-		pdflatex $PDFTEX_OPT presentation.tex
++        pdflatex $PDFTEX_OPT '\pdfinfo{/CreationDate('${PDF_DATE}')/ModDate('${PDF_DATE}')}\input{presentation.tex}'
+ 	done
+ 
+ 	rm -f autoloop.old
+ 	rm -f autoloop.new
+ fi
+ 
++grep -av '^/ID \[\(<[0-9A-F]\{32\}>\) \1]$' presentation.pdf > presentation.pdf.without_pdf_id
++mv -f presentation.pdf.without_pdf_id presentation.pdf
+diff --git a/manual/presentation.tex b/manual/presentation.tex
+index 8060998..a42648c 100644
+--- a/manual/presentation.tex
++++ b/manual/presentation.tex
+@@ -81,6 +81,7 @@
+ 
+ \title{Yosys Open SYnthesis Suite}
+ \author{Clifford Wolf}
++\date{REPLACEWITHDATE}
+ \institute{http://www.clifford.at/yosys/}
+ 
+ \usetheme{Madrid}

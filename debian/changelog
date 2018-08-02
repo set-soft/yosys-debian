@@ -1,3 +1,27 @@
+yosys (0.7+20180722gite275692-1) stable; urgency=medium
+
+  * New upstream code
+
+ -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Wed, 01 Aug 2018 13:19:09 -0300
+
+yosys (0.7-5) unstable; urgency=medium
+
+  * debian/patches/0010-Fix-adding-of-sys.path-in-yosys-smtbmc.patch
+    - Fix "ModuleNotFoundError: No module named 'smtio'" (Closes: #904752)
+  * debian/tests/smtbc:
+    - Added CI test to check that 'yosys-smtbmc' can be started with no
+      import errors
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Fri, 27 Jul 2018 20:57:41 +0200
+
+yosys (0.7-4) unstable; urgency=medium
+
+  * d/patches/0010-Fix-reproducibility-of-PDF-documents-in-yosys-doc.patch
+    - Another attempt of getting full reproducibility of PDF documents
+      in yosys-doc
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sat, 14 Jul 2018 23:47:09 +0200
+
 yosys (0.7+20180102git9804ebe-1) stable; urgency=medium
 
   * Non-maintainer upload.
@@ -18,12 +42,32 @@ yosys (0.7+20170630git8952bd6-1) stable; urgency=medium
 
  -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Fri, 30 Jun 2017 13:31:00 -0300
 
-yosys (0.7-3~exp1) UNRELEASED; urgency=low
+yosys (0.7-3) unstable; urgency=low
 
-  * debian/patches/0007-Disable-pretty-build.patch:
-    - New patch to disable pretty build (Closes: #847110)
+  * debian/copyright:
+    - Use https protocol in Format field
+  * debian/control:
+    - Added dh-python as build-dependency (Closes: #896802)
+    - Changed VCS URLs to Salsa
+    - Mark 'yosys-doc' Multi-Arch: foreign
+    - Remove 'Testsuite: autopkgtest' since it is now handled automatically
+    - Updated Standards Version to 4.1.5 - requires reproducibility
+  * debian/patches:
+    - 0007-Disable-pretty-build.patch: New patch to disable pretty build
+      (Closes: #847110)
+    - 0008-Set-fixed-date-when-calling-pdflatex-for-presentatio.patch
+      Improve reproducibility
+    - 0009-Some-spelling-errors-fixed.patch: Fixed some spelling errors
+      detected by lintian
+  * debian/rules:
+    - Pass down changelog date to pdflatex
+    - Upstream source has moved to https://github.com/YosysHQ/yosys
+    - Use /usr/share/dpkg/pkg-info.mk instead of separate calls to
+      dpkg-parsechangelog
+  * debian/watch:
+    - Fix watch URL - now github.com/YosysHQ/yosys/releases
 
- -- Ruben Undheim <ruben.undheim@gmail.com>  Wed, 05 Apr 2017 09:33:20 +0000
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Thu, 12 Jul 2018 17:27:53 +0200
 
 yosys (0.7-2) unstable; urgency=medium
 
