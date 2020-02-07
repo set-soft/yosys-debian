@@ -1,0 +1,31 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Wed, 17 Oct 2018 08:40:22 +0200
+Subject: Let dpkg-buildpackage handle stripping of binaries
+
+---
+ Makefile | 4 ----
+ 1 file changed, 4 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -767,20 +767,16 @@
+ 	$(INSTALL_SUDO) mkdir -p $(DESTDIR)$(BINDIR)
+ 	$(INSTALL_SUDO) cp $(TARGETS) $(DESTDIR)$(BINDIR)
+ ifneq ($(filter yosys,$(TARGETS)),)
+-	$(INSTALL_SUDO) $(STRIP) -S $(DESTDIR)$(BINDIR)/yosys
+ endif
+ ifneq ($(filter yosys-abc,$(TARGETS)),)
+-	$(INSTALL_SUDO) $(STRIP) $(DESTDIR)$(BINDIR)/yosys-abc
+ endif
+ ifneq ($(filter yosys-filterlib,$(TARGETS)),)
+-	$(INSTALL_SUDO) $(STRIP) $(DESTDIR)$(BINDIR)/yosys-filterlib
+ endif
+ 	$(INSTALL_SUDO) mkdir -p $(DESTDIR)$(DATDIR)
+ 	$(INSTALL_SUDO) cp -r share/. $(DESTDIR)$(DATDIR)/.
+ ifeq ($(ENABLE_LIBYOSYS),1)
+ 	$(INSTALL_SUDO) mkdir -p $(DESTDIR)$(LIBDIR)
+ 	$(INSTALL_SUDO) cp libyosys.so $(DESTDIR)$(LIBDIR)/
+-	$(INSTALL_SUDO) $(STRIP) -S $(DESTDIR)$(LIBDIR)/libyosys.so
+ ifeq ($(ENABLE_PYOSYS),1)
+ 	$(INSTALL_SUDO) mkdir -p $(PYTHON_DESTDIR)/pyosys
+ 	$(INSTALL_SUDO) cp libyosys.so $(PYTHON_DESTDIR)/pyosys/

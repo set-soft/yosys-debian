@@ -3,7 +3,7 @@ Upstream-Name: yosys
 Source: http://www.clifford.at/yosys/
 
 Files: *
-Copyright: 2012-2016 Clifford Wolf <clifford@clifford.at>
+Copyright: 2012-2019 Clifford Wolf <clifford@clifford.at>
 License: ISC
 
 Files: backends/btor/btor.cc
@@ -18,6 +18,62 @@ Copyright: 2012-2014 Clifford Wolf <clifford@clifford.at>
            2014 Johann Glaser <Johann.Glaser@gmx.at>
 License: ISC
 
+Files: backends/protobuf/protobuf.cc
+Copyright: 2012 Clifford Wolf <clifford@clifford.at>
+           2018 Serge Bazanski <q3k@symbioticeda.com>
+License: ISC
+
+Files: passes/techmap/dff2dffs.cc
+       techlibs/ecp5/arith_map.v
+       techlibs/ecp5/synth_ecp5.cc
+       techlibs/ecp5/ecp5_ffinit.cc
+       techlibs/gowin/arith_map.v
+Copyright: 2012 Clifford Wolf <clifford@clifford.at>
+           2018-2019 David Shah <dave@ds0.me>
+License: ISC
+
+Files: frontends/aiger/aigerparse.*
+Copyright: 2012 Clifford Wolf <clifford@clifford.at>
+           2012 Eddie Hung <eddie@fpgeh.com>
+License: ISC
+
+Files: frontends/ast/ast.cc
+       passes/hierarchy/hierarchy.cc
+Copyright: 2012 Clifford Wolf <clifford@clifford.at>
+           2018 Ruben Undheim <ruben.undheim@gmail.com>
+License: ISC
+
+Files: passes/opt/muxpack.cc
+Copyright: 2012 Clifford Wolf <clifford@clifford.at>
+           2019 Eddie Hung <eddie@fpgeh.com>
+License: ISC
+
+Files: passes/cmds/bugpoint.cc
+       passes/equiv/equiv_opt.cc
+       passes/opt/opt_lut.cc
+       passes/techmap/flowmap.cc
+Copyright: 2018 whitequark <whitequark@whitequark.org>
+License: ISC
+
+Files: passes/techmap/extract_reduce.cc
+       techlibs/coolrunner2/*
+Copyright: 2017 Robert Ou <rqou@robertou.com>
+License: ISC
+
+Files: techlibs/anlogic/anlogic_determine_init.c
+       techlibs/anlogic/anlogic_eqn.cc
+       techlibs/anlogic/arith_map.v
+       techlibs/anlogic/synth_anlogic.cc
+       techlibs/gowin/determine_init.cc
+Copyright: 2012,2018 Clifford Wolf <clifford@clifford.at
+           2018 Icenowy Zheng <icenowy@aosc.io>
+           2018 Miodrag Milanovic <miodrag@symbioticeda.com>
+License: ISC
+
+Files: misc/yosys.proto
+Copyright:  2018 Serge Bazanski <q3k@symbioticeda.com>
+License: ISC
+
 Files: libs/minisat/*
 Copyright: 2003-2006, Niklas Een, Niklas Sorensson
            2006-2012  Niklas Sorensson
@@ -29,6 +85,10 @@ Copyright: Steve Reid <steve@edmweb.com>
            Volker Grabsch <vog@notjusthosting.com>
 License: Public-Domain
  These files are in the public domain.
+
+Files: misc/launcher.c
+Copyright: 2016 Jason R Coombs <jaraco@jaraco.com>
+License: MIT
 
 Files: manual/CHAPTER_StateOfTheArt/simlib_hana.v
        tests/hana/hana_vlib.v
@@ -46,7 +106,8 @@ Copyright: 2010 Conor Santifort <csantifort.amber@gmail.com>
 License: LGPL-2.1+
 
 Files: debian/*
-Copyright: 2014-2015 Ruben Undheim <ruben.undheim@gmail.com>
+Copyright: 2014-2016,2018-2019 Ruben Undheim <ruben.undheim@gmail.com>
+           2016 Sebastian Kuzminsky <seb@highlab.com>
 License: GPL-2+
 
 

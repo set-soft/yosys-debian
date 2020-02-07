@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Just verify that there are no Python import errors when starting yosys-smtbmc
+
+yosys-smtbmc 2>&1 | grep --quiet  ImportError
+RET=$?
+
+if [ "$RET" = "0" ]; then
+  exit 1
+else
+  exit 0
+fi

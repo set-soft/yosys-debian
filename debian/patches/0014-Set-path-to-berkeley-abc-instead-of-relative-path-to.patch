@@ -1,0 +1,35 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Fri, 18 Oct 2019 20:49:35 +0000
+Subject: Set path to berkeley-abc instead of relative path to yosys-abc
+
+---
+ tests/aiger/run-test.sh | 2 +-
+ tests/tools/autotest.sh | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/aiger/run-test.sh b/tests/aiger/run-test.sh
+index deaf48a..4fbffcd 100755
+--- a/tests/aiger/run-test.sh
++++ b/tests/aiger/run-test.sh
+@@ -3,7 +3,7 @@
+ set -e
+ 
+ OPTIND=1
+-abcprog="../../yosys-abc"    # default to built-in version of abc
++abcprog="berkeley-abc"    # default to built-in version of abc
+ while getopts "A:" opt
+ do
+     case "$opt" in
+diff --git a/tests/tools/autotest.sh b/tests/tools/autotest.sh
+index 4d34786..6bece9b 100755
+--- a/tests/tools/autotest.sh
++++ b/tests/tools/autotest.sh
+@@ -23,7 +23,7 @@ warn_iverilog_git=false
+ # The tests are skipped if firrtl2verilog is the empty string (the default).
+ firrtl2verilog=""
+ xfirrtl="../xfirrtl"
+-abcprog="$toolsdir/../../yosys-abc"
++abcprog="berkeley-abc"
+ 
+ if [ ! -f $toolsdir/cmp_tbdata -o $toolsdir/cmp_tbdata.c -nt $toolsdir/cmp_tbdata ]; then
+ 	( set -ex; ${CC:-gcc} -Wall -o $toolsdir/cmp_tbdata $toolsdir/cmp_tbdata.c; ) || exit 1

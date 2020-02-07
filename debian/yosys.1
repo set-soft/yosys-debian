@@ -2,7 +2,7 @@
 .\" First parameter, NAME, should be all caps
 .\" Second parameter, SECTION, should be 1-8, maybe w/ subsection
 .\" other parameters are allowed: see man(7), man(1)
-.TH YOSYS 1 "November 04, 2016"
+.TH YOSYS 1 "October 17, 2018"
 .\" Please adjust this date whenever revising the manpage.
 .\"
 .\" Some roff macros, for reference:
@@ -99,8 +99,19 @@ dump the design when printing the specified log header to a file.
 yosys_dump_<header_id>.il is used as filename if none is specified.
 Use 'ALL' as <header_id> to dump at every header.
 .TP
+.B \-W regex
+if a warning message matches the regex, it is printed as regular
+message instead.
+.TP
+.B \-e regex
+if a warning message matches the regex, it is printed as error
+message instead and the tool terminates with a nonzero return code.
+.TP
 .B \-V
 print version information and exit
+.TP
+.B \-E depsfile
+write a Makefile dependencies file with in- and output file names
 .TP
 .B \-S
 The option \-S is an alias for the "synth" command, a default

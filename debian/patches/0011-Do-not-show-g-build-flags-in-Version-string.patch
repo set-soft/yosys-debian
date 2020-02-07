@@ -1,0 +1,32 @@
+From: Ruben Undheim <ruben.undheim@gmail.com>
+Date: Sun, 19 Aug 2018 23:03:51 +0200
+Subject: Do not show g++ build flags in Version string
+
+---
+ Makefile | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+
+--- a/Makefile
++++ b/Makefile
+@@ -638,8 +638,7 @@
+ 	$(Q) mkdir -p $(dir $@)
+ 	$(P) $(CXX) -o $@ -c $(CPPFLAGS) $(CXXFLAGS) $<
+ 
+-YOSYS_VER_STR := Yosys $(YOSYS_VER) (git sha1 $(GIT_REV), $(notdir $(CXX)) $(shell \
+-		$(CXX) --version | tr ' ()' '\n' | grep '^[0-9]' | head -n1) $(filter -f% -m% -O% -DNDEBUG,$(CXXFLAGS)))
++YOSYS_VER_STR := Yosys $(YOSYS_VER) (git sha1 $(GIT_REV))
+ 
+ kernel/version_$(GIT_REV).cc: $(YOSYS_SRC)/Makefile
+ 	$(P) rm -f kernel/version_*.o kernel/version_*.d kernel/version_*.cc
+@@ -653,8 +652,10 @@
+ LDLIBS_NOVERIFIC = $(LDLIBS)
+ endif
+ 
++CXXFLAGS_FOR_YOSYS_CONFIG := $(shell echo $(subst -I. -I"$(YOSYS_SRC)",-I"$(DATDIR)/include",$(CXXFLAGS_NOVERIFIC)) | sed 's/-fdebug-prefix[^ ]\+ //' | sed 's/-ffile-prefix-map[^ ]\+ //')
++
+ yosys-config: misc/yosys-config.in
+-	$(P) $(SED) -e 's#@CXXFLAGS@#$(subst -I. -I"$(YOSYS_SRC)",-I"$(DATDIR)/include",$(strip $(CXXFLAGS_NOVERIFIC)))#;' \
++	$(P) $(SED) -e 's#@CXXFLAGS@#$(CXXFLAGS_FOR_YOSYS_CONFIG)#;' \
+ 			-e 's#@CXX@#$(strip $(CXX))#;' -e 's#@LDFLAGS@#$(strip $(LDFLAGS) $(PLUGIN_LDFLAGS))#;' -e 's#@LDLIBS@#$(strip $(LDLIBS_NOVERIFIC))#;' \
+ 			-e 's#@BINDIR@#$(strip $(BINDIR))#;' -e 's#@DATDIR@#$(strip $(DATDIR))#;' < $< > yosys-config
+ 	$(Q) chmod +x yosys-config

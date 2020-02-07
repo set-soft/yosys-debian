@@ -4,3 +4,7 @@
 0006-Some-spelling-errors-fixed.patch
 0007-Disable-pretty-build.patch
 0010-Manual-build-fix.patch
+0011-Do-not-show-g-build-flags-in-Version-string.patch
+0013-Let-dpkg-buildpackage-handle-stripping-of-binaries.patch
+0014-Set-path-to-berkeley-abc-instead-of-relative-path-to.patch
+

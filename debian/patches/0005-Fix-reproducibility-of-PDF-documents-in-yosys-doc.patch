@@ -10,11 +10,9 @@ Subject: Fix reproducibility of PDF documents in yosys-doc
  manual/presentation.tex |  1 +
  5 files changed, 21 insertions(+), 8 deletions(-)
 
-diff --git a/Makefile b/Makefile
-index 8979641..aa66a54 100644
 --- a/Makefile
 +++ b/Makefile
-@@ -463,9 +463,9 @@ update-manual: $(TARGETS) $(EXTRA_TARGETS)
+@@ -803,9 +803,9 @@
  	cd manual && ../yosys -p 'help -write-tex-command-reference-manual'
  
  manual: $(TARGETS) $(EXTRA_TARGETS)
@@ -27,11 +25,9 @@ index 8979641..aa66a54 100644
  
  clean:
  	rm -rf share
-diff --git a/manual/appnotes.sh b/manual/appnotes.sh
-index 0ae5286..798d9d3 100755
 --- a/manual/appnotes.sh
 +++ b/manual/appnotes.sh
-@@ -7,16 +7,19 @@ do
+@@ -7,16 +7,19 @@
  	if [ -f $job/make.sh ]; then
  		cd $job
  		bash make.sh
@@ -52,11 +48,9 @@ index 0ae5286..798d9d3 100755
  	touch $job.ok
  done
  
-diff --git a/manual/manual.sh b/manual/manual.sh
-index c467393..4417f56 100755
 --- a/manual/manual.sh
 +++ b/manual/manual.sh
-@@ -39,7 +39,7 @@ fi
+@@ -39,7 +39,7 @@
  
  set -ex
  
@@ -65,7 +59,7 @@ index c467393..4417f56 100755
  
  if ! $fast_mode; then
  	bibtex manual.aux
-@@ -50,10 +50,12 @@ if ! $fast_mode; then
+@@ -50,10 +50,12 @@
  		! cmp autoloop.old autoloop.new
  	do
  		cp autoloop.new autoloop.old
@@ -79,11 +73,9 @@ index c467393..4417f56 100755
  
 +grep -av '^/ID \[\(<[0-9A-F]\{32\}>\) \1]$' manual.pdf > manual.pdf.without_pdf_id
 +mv -f manual.pdf.without_pdf_id manual.pdf
-diff --git a/manual/presentation.sh b/manual/presentation.sh
-index ca8a6c9..f2d0a30 100755
 --- a/manual/presentation.sh
 +++ b/manual/presentation.sh
-@@ -29,15 +29,20 @@ set -ex
+@@ -29,15 +29,20 @@
  if ! $fast_mode; then
  	! md5sum *.aux *.snm *.nav *.toc > autoloop.old
  	make -C PRESENTATION_Intro
@@ -105,7 +97,7 @@ index ca8a6c9..f2d0a30 100755
  
  if ! $fast_mode; then
  	while
-@@ -45,10 +50,12 @@ if ! $fast_mode; then
+@@ -45,10 +50,12 @@
  		! cmp autoloop.old autoloop.new
  	do
  		cp autoloop.new autoloop.old
@@ -119,8 +111,6 @@ index ca8a6c9..f2d0a30 100755
  
 +grep -av '^/ID \[\(<[0-9A-F]\{32\}>\) \1]$' presentation.pdf > presentation.pdf.without_pdf_id
 +mv -f presentation.pdf.without_pdf_id presentation.pdf
-diff --git a/manual/presentation.tex b/manual/presentation.tex
-index 8060998..a42648c 100644
 --- a/manual/presentation.tex
 +++ b/manual/presentation.tex
 @@ -81,6 +81,7 @@

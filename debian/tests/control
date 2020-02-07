@@ -1,2 +1,2 @@
-Tests: ice
+Tests: ice, smtbc
 Depends: @

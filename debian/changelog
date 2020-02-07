@@ -1,8 +1,88 @@
-yosys (0.7+20180722gite275692-1) stable; urgency=medium
+yosys (0.9dev+20200204git949eb7a-1) unstable; urgency=medium
 
-  * New upstream code
+  * Patches refreshed
 
- -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Wed, 01 Aug 2018 13:19:09 -0300
+ -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Wed, 05 Feb 2020 10:15:15 -0300
+
+yosys (0.9-1) unstable; urgency=medium
+
+  * Upload to sid
+  * New upstream release
+    - Refreshed patches
+  * debian/copyright:
+    - Get copyright info up-to-date
+  * debian/control:
+    - New standards version 4.4.0 - no changes
+    - DH level 12
+    - Use debhelper-compat instead of debian/compat file
+    - Change build-dependency from texlive-generic-recommended to
+      texlive-plain-generic (Closes: #941555) (Thanks Steve Langasek)
+  * debian/rules:
+    - Don't override dh_install with --fail-missing anymore
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Fri, 18 Oct 2019 23:27:34 +0200
+
+yosys (0.8+20190328git32bd0f2-1~exp1) experimental; urgency=low
+
+  * New upstream GIT HEAD
+  * debian/control:
+    - New standards version 4.3.0 - no changes
+  * debian/copyright:
+    - Added new copyright holders
+  * debian/patches: Refreshed patches
+  * debian/yosys.install: Install more files
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 31 Mar 2019 00:01:48 +0100
+
+yosys (0.8-1) unstable; urgency=medium
+
+  * New upstream release
+  * debian/control:
+    - New standards version 4.2.1 - no changes
+  * debian/copyright:
+    - New copyright years
+    - Some new copyright holders for certain files
+  * debian/patches: Fix patches after importing new version
+  * d/patches/0013-Let-dpkg-buildpackage-handle-stripping-of-binaries.patch:
+    - Fix issue with empty -dbgsym package
+  * debian/rules:
+    - Enable hardening
+    - Remove redundant '--parallel'
+    - Override dh_auto_install and remove executable permission on some files
+    - Delete one more file in override_dh_auto_clean
+  * debian/yosys.1: Updated man page for new version
+  * debian/yosys.install: Install new files
+  * debian/yosys.lintian-overrides:
+    - Waive a 'spelling error' which is in fact not an error.
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Wed, 17 Oct 2018 18:36:13 +0200
+
+yosys (0.7-8) unstable; urgency=medium
+
+  * d/patches/0012-Skip-non-deterministic-test-causing-random-FTBFS-on-.patch:
+    - Disable test which fails some times when being built (Closes: #907211)
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Tue, 04 Sep 2018 20:00:14 +0200
+
+yosys (0.7-7) unstable; urgency=medium
+
+  * debian/patches/0011-Do-not-show-g-build-flags-in-Version-string.patch:
+    - Do not quote CXXFLAGS_FOR_YOSYS_CONFIG (fixes build on all)
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Wed, 22 Aug 2018 07:23:08 +0200
+
+yosys (0.7-6) unstable; urgency=medium
+
+  * debian/compat: level 11
+  * debian/control:
+    - debhelper >= 11
+    - Standards version 4.2.0 - no changes
+  * debian/upstream/metadata: Added upstream metadata
+  * d/patches/0011-Do-not-show-g-build-flags-in-Version-string.patch:
+    - some build flags for the g++ version being used were "injected" into
+      the source files for yosys. Remove them
+
+ -- Ruben Undheim <ruben.undheim@gmail.com>  Tue, 21 Aug 2018 21:37:46 +0200
 
 yosys (0.7-5) unstable; urgency=medium
 
@@ -21,26 +101,6 @@ yosys (0.7-4) unstable; urgency=medium
       in yosys-doc
 
  -- Ruben Undheim <ruben.undheim@gmail.com>  Sat, 14 Jul 2018 23:47:09 +0200
-
-yosys (0.7+20180102git9804ebe-1) stable; urgency=medium
-
-  * Non-maintainer upload.
-
- -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Tue, 02 Jan 2018 13:48:00 -0300
-
-yosys (0.7+20170701gitea805af-2) stable; urgency=medium
-
-  * Non-maintainer upload.
-  * New stable base Stretch
-
- -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Fri, 15 Sep 2017 09:34:45 -0300
-
-yosys (0.7+20170630git8952bd6-1) stable; urgency=medium
-
-  * Non-maintainer upload.
-  * New upstream release: 0.7 (61f6811)
-
- -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Fri, 30 Jun 2017 13:31:00 -0300
 
 yosys (0.7-3) unstable; urgency=low
 
@@ -91,14 +151,6 @@ yosys (0.7-1) unstable; urgency=medium
     - Build-depend on iverilog >= 10.1
 
  -- Ruben Undheim <ruben.undheim@gmail.com>  Sun, 06 Nov 2016 11:28:06 +0100
-
-yosys (0.6+20161022gitaa72262-1) stable; urgency=medium
-
-  * Non-maintainer upload.
-  * New upstream release: 0.6 (ee91350)
-    - Refreshed patches
-
- -- Salvador Eduardo Tropea <salvador@inti.gob.ar>  Mon, 24 Oct 2016 14:24:30 -0300
 
 yosys (0.6-7) unstable; urgency=medium
 
@@ -210,7 +262,7 @@ yosys (0.5.0+20151013gitf13e387-1) unstable; urgency=low
 
 yosys (0.5.0+20151007gitba4cce9-1) experimental; urgency=low
 
-  * New upstream version 
+  * New upstream version
     - Refreshed patches
   * debian/control: Added "python3" as build-dependency
 
